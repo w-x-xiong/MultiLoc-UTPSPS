@@ -54,7 +54,9 @@ while 1
         if (isnan(sum(pjk_mtx(:,n_idx))) || ((sum(pjk_mtx(:,n_idx)))==0))
             pjk_mtx(:,n_idx) = lb + (ub - lb).*rand(2*H+1, 1);
         end
-        
+
+        %You may implement a custom quasi-Newton method tailored to your specific context
+        %This is simply a demonstration of using MATLAB's built-in command fminunc
         [y_est_int,~,~,~] = fminunc(@obj_fun,pjk_mtx(:,n_idx),options);
 
         pj_tilde_mtx(:, n_idx) = y_est_int;
